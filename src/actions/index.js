@@ -1,16 +1,7 @@
 const fetch = require('node-fetch');
 
-
-const HISTORY_URL = 'https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json';
-const BEST_URL = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json';
-const POPULAR_URL = 'https://api.nytimes.com/svc/mostpopular/v2/mostemailed/all-sections/1.json';
-
-
-const API_KEY = process.env.API_KEY;
-
-const historyUrl = `${HISTORY_URL}?api-key=${API_KEY}`;
-const bestUrl = `${BEST_URL}?api-key=${API_KEY}`;
-const popularUrl = `${POPULAR_URL}?api-key=${API_KEY}`;
+const bestUrl = `https://api.times.dcrands.com/api/best`;
+const popularUrl = `https://api.times.dcrands.com/api/popular`;
 
 
 export const FETCH_HISTORY = 'FETCH_HISTORY';
@@ -91,8 +82,7 @@ export function fetchArchivesSuccess(request) {
 }
 
 export function fetchArchives(min, max) {
-    const ARCHIVES_URL = `https://api.nytimes.com/svc/archive/v1/${getRandomYear(min, max)}/${getRandomMonth()}.json`;
-    const archivesUrl = `${ARCHIVES_URL}?api-key=${API_KEY}`;
+    const archivesUrl = `https://api.times.dcrands.com/api/archives/${getRandomYear(min, max)}/${getRandomMonth()}`;
     return dispatch => {
         dispatch(fetchLoading(true));        
         dispatch(fetchError(false));        
