@@ -19,7 +19,7 @@ React/Redux application featuring data from the New York Times API.
 ## Table of Contents
 - [Background](#background)
   - [Prerequisites](#prerequisites)
-- [Getting Started](#getStarted)
+- [Getting Started](#getting-started)
 - [How it works](#how)
 
 
@@ -36,7 +36,7 @@ I don't follow the news at all, but news data, particularly news articles, typic
 ### Why the New York Times?
 The primary reason I went with the New York Times API was to access their archives. These archives are massive, with some request payloads for a single month numbering tens-of-thousands of articles. As a history buff, I wanted a tool tap into this immense trove of information, and thus this app.
 
-## How it works
+## Gettting Started
 You will need to have Node installed. Once you've cloned the repository, install your dependencies.
 
 ```
@@ -53,7 +53,7 @@ $ npm run dev
 $ npm run prod
 ```
 
-
+## How it works
 ### Actions
 Each Redux action is a call to a Flask application that then makes a call to the New York Times API (Here is the [repository for the Flask application](https://github.com/dacrands/times-app-api) used to handle API calls). I used the [redux-thunk library](https://github.com/reduxjs/redux-thunk) for these asynchronous API-calls, namely for the purposes of error and loading states. 
 
