@@ -29,8 +29,8 @@ Once I found out about the wonderful world of APIs, I knew right away that I wan
 I don't follow the news at all, but news data, particularly news articles, typically have a simple data-structure of a title, text, and perhaps a few images. This was an ideal schema for me, as I wanted data that would be easy to build a UI around.
 
 ### Prerequisites
-- React-Redu knowledge
-- a designated API that deliver NYT API data
+- [React-Redux](https://redux.js.org/basics/usage-with-react) knowledge
+- a [designated API](https://github.com/dacrands/nyt-api-cors) that deliver NYT API data
 
 ### Why the New York Times?
 The primary reason I went with the New York Times API was to access their archives. These archives are massive, with some request payloads for a single month numbering tens-of-thousands of articles. As a history buff, I wanted a tool tap into this immense trove of information, and thus this app.
@@ -60,14 +60,14 @@ export function fetchArchives(min, max) {
 }
 ```
 
-<br />
-
 This is the action used to fetch the archives data. Take note of `dispatch` and its returning of an asnychronous function. However, prior to returning this function, it calls two actions. `fetchLoading()` receives a boolean indicating whether or not the API call has resolved yet &mdash; when the associated reducer's state is set to `true`, the user sees a loading animation. `fetchError` also receives a bool and is only set to `true` if the fetch does not resolve &mdash; similar to `fetchLoading`, when the `fetchError` reducer's state is set to `true`, the user sees an error message. This allows for a nice UX, as calls to the archives can take a few seconds.
 
-Each container has an associated action. When a container mounts, the action is called and the data passed via props.
+
 
 
 ### Containers
+Each container has an associated action. When a container mounts, the action is called and the data passed via props.
+
 ```javascript
 componentDidMount() {
     this.props.fetchPopular();    
@@ -82,6 +82,8 @@ function mapStateToProps({ popular }) {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Popular);
 ```
+
+
 
 ## Author
 David Crandall
