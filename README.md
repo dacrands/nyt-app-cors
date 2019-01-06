@@ -36,7 +36,7 @@ I don't follow the news at all, but news data, particularly news articles, typic
 ### Why the New York Times?
 The primary reason I went with the New York Times API was to access their archives. These archives are massive, with some request payloads for a single month numbering tens-of-thousands of articles. As a history buff, I wanted a tool tap into this immense trove of information, and thus this app.
 
-## Gettting Started
+## Getting Started
 You will need to have Node installed. Once you've cloned the repository, install your dependencies.
 
 ```
