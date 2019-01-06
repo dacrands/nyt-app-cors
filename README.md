@@ -29,6 +29,7 @@ Once I found out about the wonderful world of APIs, I knew right away that I wan
 I don't follow the news at all, but news data, particularly news articles, typically have a simple data-structure of a title, text, and perhaps a few images. This was an ideal schema for me, as I wanted data that would be easy to build a UI around.
 
 ### Prerequisites
+- [Node](https://nodejs.org/en/)
 - [React-Redux](https://redux.js.org/basics/usage-with-react) knowledge
 - a [designated API](https://github.com/dacrands/nyt-api-cors) that deliver NYT API data
 
@@ -36,6 +37,22 @@ I don't follow the news at all, but news data, particularly news articles, typic
 The primary reason I went with the New York Times API was to access their archives. These archives are massive, with some request payloads for a single month numbering tens-of-thousands of articles. As a history buff, I wanted a tool tap into this immense trove of information, and thus this app.
 
 ## How it works
+You will need to have Node installed. Once you've cloned the repository, install your dependencies.
+
+```
+$ npm i
+```
+
+### Development
+```
+$ npm run dev
+```
+
+### Production
+```
+$ npm run prod
+```
+
 
 ### Actions
 Each Redux action is a call to a Flask application that then makes a call to the New York Times API (Here is the [repository for the Flask application](https://github.com/dacrands/times-app-api) used to handle API calls). I used the [redux-thunk library](https://github.com/reduxjs/redux-thunk) for these asynchronous API-calls, namely for the purposes of error and loading states. 
@@ -83,6 +100,7 @@ function mapStateToProps({ popular }) {
 export default connect(mapStateToProps, mapDispatchToProps)(Popular);
 ```
 
+That is really the primary logic of the application. 
 
 
 ## Author
