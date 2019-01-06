@@ -56,5 +56,5 @@ export function fetchArchives(min, max) {
 
 <br />
 
-This is the action used to fetch the archives data. Take note of `dispatch` and its returning of an asnychronous function. However, prior to returning this function, it calls two actions. `fetchLoading()` receives a boolean indicating whether or not the API call has resolved yet &mdash; when the associated reducer's state is set to `true`, the user sees a loading animation. `fetchError` also receives a bool and is only set to `false` if the fetch does not resolve.
+This is the action used to fetch the archives data. Take note of `dispatch` and its returning of an asnychronous function. However, prior to returning this function, it calls two actions. `fetchLoading()` receives a boolean indicating whether or not the API call has resolved yet &mdash; when the associated reducer's state is set to `true`, the user sees a loading animation. `fetchError` also receives a bool and is only set to `true` if the fetch does not resolve &mdash; similar to `fetchLoading`, when the `fetchError` reducer's state is set to `true`, the user sees an error message. This allows for a nice UX, as some API
 
