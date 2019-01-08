@@ -6,10 +6,7 @@ import { bindActionCreators } from 'redux';
 class Best extends Component {
     
     componentDidMount() {
-        this.props.fetchBest();
-        // setTimeout(() => {
-        //     console.log(this.props.best);
-        // }, 3500);         
+        this.props.fetchBest();       
     }
 
     renderBest(book) {
@@ -36,7 +33,6 @@ class Best extends Component {
         return(            
             <div className={"container books"}>
                 {
-                    // console.log(this.props.best[0])
                     this.props.best[0]
                     ? this.props.best[0].map(this.renderBest) 
                     : null

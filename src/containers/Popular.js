@@ -14,8 +14,14 @@ class Popular extends Component {
             <div key={post.title.replace(/\s/g, '')}>            
                 <article className={"popular"} >                
                     <div className="popular__items">                        
-                        <div className="popular__image" style={{backgroundImage: `url(${post.media["0"]["media-metadata"]["2"].url})`}}>
-                            {/* <img className="fluid thumbnail" src={post.media["0"]["media-metadata"]["1"].url} alt=""/> */}
+                        <div 
+                            className="popular__image" 
+                            style={post.media["0"]["media-metadata"]["2"]                         
+                                ? {backgroundImage: `url(${post.media["0"]["media-metadata"]["2"].url})`}
+                                : {backgroundImage: `url(https://imgur.com/7SIlmAJ)`}
+                                }
+                            >                            
+
                         </div>                                           
                         <div className="popular__text">                                
                             <h3>{post.title}</h3>                            
