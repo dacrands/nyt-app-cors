@@ -68,18 +68,30 @@ p {
 }
 
 
-.title {            
-    max-width: 500px;    
-    margin-top: 1em;
+.title {                
+    margin: 1rem;
     padding: 1em;    
-    background: #eee;    
-    /* box-shadow: 2px 2px 6px rgba(0,0,0,0.25); */
+    background: #eee;        
+    h1 {
+        color: $med;
+    }
 }
 
 .title h3 {
     margin: 0;
 }
 
+.header {
+    // background: $dark;
+    min-height: 20vh;
+    padding: 0 2rem;
+    background: $light;
+    margin: 2rem;
+    color: $med;
+    // color: $light;
+    display: flex;
+    align-items: center;
+}
 
  // /* ===================
 // CONTAINER
@@ -89,8 +101,9 @@ p {
     // /* outline: 4px solid green; */
     max-width: 1200px;
     margin: 0 auto;    
-    padding: 0 2em;
+    padding: 0 2rem;    
 }
+
 
 /* ===================
 NAV
@@ -348,20 +361,13 @@ NAV
 .inputs {
     // /* outline: 3px dashed darkgoldenrod; */
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    
     // /* font-size: 1.2rem; */
 }
 
-
-.inputs__item-label {
-    // outline: 4px darkslategray;
-    // /* background: #000; */
-    // /* position: absolute; */
-    transition: all 300ms ease;
-    // /* z-index: 2; */
+.inputs__item-label {    
+    transition: all 300ms ease;    
 }
-
-
 
 .inputs label {
     padding: 8px;
@@ -373,6 +379,7 @@ NAV
     border: none;
     font-size: 1.2rem;
 }
+
 
 .search {
     // /* outline: 3px dashed black; */
@@ -389,7 +396,6 @@ NAV
 .search--hide {
     transform: translateX(-102%);
 }
-
 
 .search__container {
     // /* outline: 4px dashed plum; */
@@ -427,20 +433,13 @@ NAV
     padding: 1em;
 }
 .popular__items {
-    // /* background-size: contain;
-    // background-repeat: no-repeat; */
-    // padding: 1em;
     box-shadow: 0 0 4px rgba(0,0,0,0.3);
     display: flex;
-    flex-direction: column;
-    // border: 1px solid $primary-light;
-    border-radius: 5px;
-    // /* align-items: center; */
+    flex-direction: column;    
+    border-radius: 5px;    
 }
 
-.popular__image {
-    // margin-right: 1em;
-    // width: 100%;
+.popular__image {    
     height: 200px;
     background-repeat: no-repeat;
     background-size: cover;    
@@ -449,10 +448,8 @@ NAV
 }
 
 .popular__text {
-    padding: 1em;
-
-    a {
-        // border: 1px solid $primary-light;
+    padding: 1rem;
+    a {        
         padding: 0.25rem;
         text-decoration: none;
         color: $primary-light;
@@ -463,7 +460,6 @@ NAV
             margin-right: 0;     
         }
     }
-
     span {
         transition: all 200ms ease;
         margin-right: 3px;            
@@ -471,11 +467,12 @@ NAV
 }
 
 
-
 .loading {
     position: relative;
     text-align: center;
-    // /* padding-top: 2em; */
+    h2 {
+        color: $med;
+    }
 }
 
 .spinner {
@@ -484,21 +481,18 @@ NAV
     left: 50%;
     margin-top: 2em;
     margin-left: -50px;
-//   /*   background: #000; */
     height: 100px;
     width: 100px;
     border-radius: 50%;
   }
   
   .disc {
-//   /*   background: blue; */
     position: relative;
     height: 100%;
     width: 100%;
   }
   
   .disc__item {
-//   /*   background: blue; */
     position: absolute;
     top: 0;
     bottom: 0;
@@ -506,20 +500,18 @@ NAV
     right: 0;
     border-radius: 50%;
     border: 5px solid white;
-    border-left-color: rgb(76, 133, 255);
-    border-right-color: rgb(76, 133, 255);  
+    border-left-color: $med;
+    border-right-color: $med;  
     transition: all 300ms ease;
     animation: 1000ms infinite spin;
     padding: 5px;  
   }
-  
   @keyframes spin {
     0% {
       transform: rotate(0deg);   
       width: inherit;
       height: inherit;
-    }
-    
+    } 
     50% {
 //   /*     transform: rotate(360deg);  */
         margin-top: 17.5px;
@@ -533,23 +525,10 @@ NAV
       width: inherit;
       height: inherit;
     }
-    
-   
 }
 
 
-@media(max-width: 850px) {
-    .header{
-        font-size: 1.4rem;
-    }
-}
-
-@media(max-width: 472px) {
-
-    .header {
-        font-size: 1rem;
-        padding: 2em 0;
-    }
+@media(max-width: 472px) {    
     .articles {
         grid-template-columns: repeat(auto-fill, minmax(96%, 1fr));
     }

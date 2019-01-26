@@ -45,19 +45,26 @@ export function fetchHistory() {
     });
 }
 
+export function fetchPopularSuccess(request) {
+    return { 
+        type: FETCH_POPULAR,
+        payload: request
+    };
+}
 
 export function fetchPopular() {
-    return fetch(popularUrl)
-    .then((response) => {
-        return response.json();
-    })
-    .then((request) => {
-        console.log(request);       
-        return {
-            type: FETCH_POPULAR,
-            payload: request 
-        }
-    });
+    return dispatch => {
+        dispatch(fetchLoading(true));        
+        dispatch(fetchError(false));
+        return fetch(popularUrl)
+        .then((response) => {
+            return response.json();
+        })
+        .then((request) => {   
+            dispatch(fetchLoading(false));     
+            return dispatch(fetchPopularSuccess(request))
+        }).catch(e => dispatch(fetchError(true)));
+    }    
 }
 
 export function fetchBestSuccess(request) {

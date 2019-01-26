@@ -32,9 +32,9 @@ class Best extends Component {
     render() {
         if (this.props.isError) {
             return (
-                <div className={"title container"}>
+                <header className={"header"}>
                     <h1>Sorry! There was an error loading the items</h1>                    
-                </div>
+                </header>
             )
         }
 
@@ -70,7 +70,11 @@ function mapDispatchToProps(dispatch) {
 }
 
 const mapStateToProps = (state) => {
-    return { best: state.best, isError: state.error, isLoading: state.loading };
+    return { 
+        best: state.best, 
+        isError: state.error, 
+        isLoading: state.loading 
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Best);

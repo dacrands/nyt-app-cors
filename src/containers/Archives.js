@@ -19,15 +19,15 @@ class Archives extends Component {
             showYearEnd: false,
             showSearch: false
         }
- 
+
         this.setYearStart = this.setYearStart.bind(this);
-        this.setYearEnd = this.setYearEnd.bind(this);               
+        this.setYearEnd = this.setYearEnd.bind(this);
     }
 
-    
+
     componentDidMount() {
-        this.props.fetchArchives(this.state.yearStart, this.state.yearEnd);                         
-        
+        this.props.fetchArchives(this.state.yearStart, this.state.yearEnd);
+
         // Show the side search menu only when main search is out of view
         window.addEventListener('scroll', () => {
             if (this.refs.articles) {
@@ -36,29 +36,29 @@ class Archives extends Component {
                 } else {
                     this.refs.search.style.display = "none"
                 }
-            }            
+            }
         })
     }
 
-    setYearStart(event){
+    setYearStart(event) {
         if (event.target.value.length === 4) {
             this.setState({
-                yearStart: parseInt(event.target.value), 
+                yearStart: parseInt(event.target.value),
                 showYearEnd: true
-            });        
-        }        
+            });
+        }
     }
 
-    setYearEnd(event){
+    setYearEnd(event) {
         if (event.target.value.length === 4) {
-            this.setState({yearEnd: parseInt(event.target.value)});
-        }        
+            this.setState({ yearEnd: parseInt(event.target.value) });
+        }
     }
 
     renderArchives(post, index) {
         return (
             <article
-                key={index} 
+                key={index}
                 className={"archive"}
             >
                 <div className="archive__title">
@@ -66,39 +66,41 @@ class Archives extends Component {
                         {post.headline.main}
                     </h3>
                     <p className="lead">{new Date(post.pub_date).toDateString()}</p>
-                </div>                
+                </div>
                 <div className="archive__content">
-                    <p>       
+                    <p>
                         {post.lead_paragraph}
-                    </p>           
-                </div>                
-            </article>            
+                    </p>
+                </div>
+            </article>
         );
     }
 
     render() {
         if (this.props.isError) {
             return (
-                <div className={"title container"}>
-                    <h1>Sorry! There was an error loading the items</h1>
-                    <p>I'm sure this is on my end and that you did not
-                        intentionally try to break my app.
+                <div className={"title"}>
+                    <div className="container">
+                        <h1>Sorry! There was an error loading the items</h1>
+                        <p>I'm sure this is on my end and that you did not
+                            intentionally try to break my app.
                     </p>
-                    <div className="title__item">
-                        <Input 
-                            yearStart={this.state.yearStart} 
-                            yearEnd={this.state.yearEnd}
-                            setYearStart={this.setYearStart}
-                            setYearEnd={this.setYearEnd}
-                            showYearEnd={this.state.showYearEnd}
-                        />                      
-                    </div>  
+                        <div className="title__item">
+                            <Input
+                                yearStart={this.state.yearStart}
+                                yearEnd={this.state.yearEnd}
+                                setYearStart={this.setYearStart}
+                                setYearEnd={this.setYearEnd}
+                                showYearEnd={this.state.showYearEnd}
+                            />
+                        </div>
+                    </div>
                 </div>
             );
-            
+
         }
 
-        if (this.props.isLoading) {            
+        if (this.props.isLoading) {
             return (
                 <div className="container">
                     <div className="loading">
@@ -106,91 +108,91 @@ class Archives extends Component {
                         <div className="spinner">
                             <div className="disc">
                                 <div className="disc__item"></div>
-                            </div>                        
+                            </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             );
         }
 
-        return(
-            <div className="container--archives">            
-            <div className="container">                                                         
-                <div>
-                    {         
-                        this.props.archives[0]
-                        ? 
-                            <header>
-                                <h2>
-                                    {`Current Year Range: ${this.state.yearStart} - ${this.state.yearEnd}`}
-                                </h2>
-                                {/* <hr/>               */}
-                                <div className="title">
-                                    <div className="title__item">
-                                        <h3>Search for random articles between the year {this.state.yearStart} and {this.state.yearEnd}</h3>
-                                    </div>                                                      
-                                    <nav className="title__item">
-                                        <Input 
-                                            yearStart={this.state.yearStart} 
-                                            yearEnd={this.state.yearEnd}
-                                            setYearStart={this.setYearStart}
-                                            setYearEnd={this.setYearEnd}
-                                            showYearEnd={this.state.showYearEnd}
-                                        />                
-                                    </nav>                                                    
-                                </div>                                                                
-                            </header>
-                        : 'loading...'
-                    }                                                  
-                </div>                
-                {/* <Search yearStart={this.state.yearStart} yearEnd={this.state.yearEnd} showSearch={this.state.showSearch} /> */}
-                <div ref={"search"} className={this.state.showSearch ? "search" : "search search--hide"}>                                        
-                    <div className="search__container">
-                        <Input 
-                            yearStart={this.state.yearStart} 
-                            yearEnd={this.state.yearEnd}
-                            setYearStart={this.setYearStart}
-                            setYearEnd={this.setYearEnd}
-                            showYearEnd={this.state.showYearEnd}
-                        />                       
-                        <button 
-                            className="button search__tab" 
-                            onClick={() => {this.setState({ showSearch: !this.state.showSearch })}}
-                        >                                
-                            <p>
-                                {
-                                    this.state.showSearch 
-                                    ? <Close /> 
-                                    : <Search />
-                                }
-                            </p>
-                        </button>   
-                    </div>  
-                </div>                                         
+        return (
+            <div className="container--archives">
+                <div className="container">
+                    <div>
+                        {
+                            this.props.archives[0]
+                                ?
+                                <header>
+                                    <h2>
+                                        {`Current Year Range: ${this.state.yearStart} - ${this.state.yearEnd}`}
+                                    </h2>
+                                    {/* <hr/>               */}
+                                    <div className="title">
+                                        <div className="title__item">
+                                            <h3>Search for random articles between the year {this.state.yearStart} and {this.state.yearEnd}</h3>
+                                        </div>
+                                        <nav className="title__item">
+                                            <Input
+                                                yearStart={this.state.yearStart}
+                                                yearEnd={this.state.yearEnd}
+                                                setYearStart={this.setYearStart}
+                                                setYearEnd={this.setYearEnd}
+                                                showYearEnd={this.state.showYearEnd}
+                                            />
+                                        </nav>
+                                    </div>
+                                </header>
+                                : 'loading...'
+                        }
+                    </div>
+                    {/* <Search yearStart={this.state.yearStart} yearEnd={this.state.yearEnd} showSearch={this.state.showSearch} /> */}
+                    <div ref={"search"} className={this.state.showSearch ? "search" : "search search--hide"}>
+                        <div className="search__container">
+                            <Input
+                                yearStart={this.state.yearStart}
+                                yearEnd={this.state.yearEnd}
+                                setYearStart={this.setYearStart}
+                                setYearEnd={this.setYearEnd}
+                                showYearEnd={this.state.showYearEnd}
+                            />
+                            <button
+                                className="button search__tab"
+                                onClick={() => { this.setState({ showSearch: !this.state.showSearch }) }}
+                            >
+                                <p>
+                                    {
+                                        this.state.showSearch
+                                            ? <Close />
+                                            : <Search />
+                                    }
+                                </p>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <main className={"container"}>
-                    {         
+                    {
                         this.props.archives[0]
-                        ? 
-                            <header>                              
+                            ?
+                            <header>
                                 <h2>
-                                {`Articles from ${new Date(this.props.archives[0][0].pub_date).getMonth() + 1 } / ${new Date(this.props.archives[0][0].pub_date).getFullYear()}`}                                
-                                </h2>                                
+                                    {`Articles from ${new Date(this.props.archives[0][0].pub_date).getMonth() + 1} / ${new Date(this.props.archives[0][0].pub_date).getFullYear()}`}
+                                </h2>
                             </header>
-                        : 'loading...'
-                    }                
-                    <section ref={'articles'} className={"articles"}>     
-                        
-                        {         
+                            : 'loading...'
+                    }
+                    <section ref={'articles'} className={"articles"}>
+
+                        {
                             this.props.archives[0]
-                            ? this.props.archives[0].slice(1, 100).map(this.renderArchives)
-                            // ? const newList = this.shuffle(this.props.archives[0].slice(1, 100)).map(this.renderArchives)
-                            : 'loading...' 
+                                ? this.props.archives[0].slice(1, 100).map(this.renderArchives)
+                                // ? const newList = this.shuffle(this.props.archives[0].slice(1, 100)).map(this.renderArchives)
+                                : 'loading...'
                         }
                     </section>
                 </main>
-                
-            
+
+
             </div>
         );
     }
@@ -201,8 +203,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 const mapStateToProps = (state) => {
-    return { 
-        archives: state.archives,  
+    return {
+        archives: state.archives,
         isError: state.error,
         isLoading: state.loading,
     };

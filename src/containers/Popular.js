@@ -38,6 +38,29 @@ class Popular extends Component {
     }
 
     render() {
+        if (this.props.isError) {
+            return (
+                <header className={"header"}>
+                    <h1>Sorry! There was an error.</h1>                    
+                </header>
+            );
+            
+        }
+
+        if (this.props.isLoading) {            
+            return (
+                <div className="container">
+                    <div className="loading">
+                        <h2>Grabbing random articles...</h2>
+                        <div className="spinner">
+                            <div className="disc">
+                                <div className="disc__item"></div>
+                            </div>                        
+                        </div>
+                    </div>                    
+                </div>
+            );
+        }
         return (
             <div className="container">'
                 <header>
@@ -59,8 +82,13 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ fetchPopular }, dispatch);    
 }
 
-function mapStateToProps({ popular }) {
-    return { popular };
+const mapStateToProps = (state) => {
+    return { 
+        popular: state.popular,  
+        isError: state.error,
+        isLoading: state.loading,
+    };
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Popular);
