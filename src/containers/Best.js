@@ -30,6 +30,29 @@ class Best extends Component {
     }
 
     render() {
+        if (this.props.isError) {
+            return (
+                <div className={"title container"}>
+                    <h1>Sorry! There was an error loading the items</h1>                    
+                </div>
+            )
+        }
+
+        if (this.props.isLoading) {            
+            return (
+                <div className="container">
+                    <div className="loading">
+                        <h2>Grabbing best-sellers...</h2>
+                        <div className="spinner">
+                            <div className="disc">
+                                <div className="disc__item"></div>
+                            </div>                        
+                        </div>
+                    </div>                    
+                </div>
+            );
+        }
+
         return(            
             <div className={"container books"}>
                 {
@@ -46,8 +69,8 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ fetchBest }, dispatch);
 }
 
-function mapStateToProps({ best }) {
-    return { best };
+const mapStateToProps = (state) => {
+    return { best: state.best, isError: state.error, isLoading: state.loading };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Best);

@@ -60,18 +60,26 @@ export function fetchPopular() {
     });
 }
 
+export function fetchBestSuccess(request) {
+    return { 
+        type: FETCH_BEST,
+        payload: request
+    };
+}
 
 export function fetchBest() {
-    return fetch(bestUrl)
+    return dispatch => {
+        dispatch(fetchLoading(true));        
+        dispatch(fetchError(false));
+        return fetch(bestUrl)
         .then((response) => {
             return response.json();
         })
         .then((request) => {
-            return {
-                type: FETCH_BEST,
-                payload: request 
-            }
-    });
+            dispatch(fetchLoading(false));
+            return dispatch(fetchBestSuccess(request))
+        }).catch(e => dispatch(fetchError(true)));
+    }    
 }
 
 export function fetchArchivesSuccess(request) {
