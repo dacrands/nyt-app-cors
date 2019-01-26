@@ -51,7 +51,7 @@ class Popular extends Component {
             return (
                 <div className="container">
                     <div className="loading">
-                        <h2>Grabbing random articles...</h2>
+                        <h2>Grabbing popular articles...</h2>
                         <div className="spinner">
                             <div className="disc">
                                 <div className="disc__item"></div>

@@ -31,7 +31,7 @@ export default class Nav extends Component {
                         <NavLink
                             to="/archives"
                             activeClassName="active"
-                        >Archives</NavLink>
+                        >Archive</NavLink>
                     </li>
                     <li className="nav__list-item">
                         <NavLink

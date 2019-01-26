@@ -105,6 +105,7 @@ class Archives extends Component {
                 <div className="container">
                     <div className="loading">
                         <h2>Grabbing random articles...</h2>
+                        <small>(This may take awhile. It's a pretty big archive)</small>
                         <div className="spinner">
                             <div className="disc">
                                 <div className="disc__item"></div>

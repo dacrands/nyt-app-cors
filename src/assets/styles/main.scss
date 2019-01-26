@@ -142,17 +142,17 @@ NAV
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: bold;
-    color: $dark;
+    color: $med;
     transition: all 200ms ease;
-    border-bottom: 3px solid transparent;                 
+    // border-bottom: 3px solid transparent;                 
     &:hover {
-        border-bottom: 3px solid $med;                    
+        // border-bottom: 3px solid $med;                    
         color: $dark;        
     }
 }
 
 .nav__list .nav__list-item .active {
-    border-bottom: 3px solid $med;           
+    color: $dark;           
 }
 
 .nav--sticky {
@@ -260,24 +260,22 @@ NAV
 // =================== */
 
 .header--main {
-    transition: all 200ms ease;
-    background: #dadada;
+    transition: all 200ms ease;    
+    background: $dark;      
     padding: 1em 0;
-    &:hover {
-        // background: $dark;          
+    &:hover {        
         color: $med;
     }  
-
     h1 {
         margin: 0;
 
     }
 }
 
-.header__navlink {       
-    color: $dark;
+.header__navlink {           
     text-decoration: none; 
-    transition: all 200ms ease;        
+    transition: all 200ms ease;   
+    color: $light;        
 }
 
 .active .header--main {
@@ -472,6 +470,7 @@ NAV
     text-align: center;
     h2 {
         color: $med;
+        margin-bottom: 0.5rem;
     }
 }
 
